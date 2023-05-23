@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933333"
+   version="1.1"
+   id="svg11650"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="zoom-in.svg"
+   inkscape:export-filename="center_ptr.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#">
+  <sodipodi:namedview
+     id="namedview11652"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="4.2784723"
+     inkscape:cx="-11.102094"
+     inkscape:cy="26.761889"
+     inkscape:window-width="1920"
+     inkscape:window-height="1002"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g3930" />
+  <defs
+     id="defs11647" />
+  <g
+     inkscape:label="圖層 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3930"
+       inkscape:label="mid_ptr">
+      <path
+         id="path3914"
+         style="fill:#efb876;fill-opacity:1;stroke:#de871c;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 10.583335,2.2861236 c -2.1275763,0 -6.8554827,6.6787489 -5.9773048,7.1598549 0.8781781,0.481106 1.7221538,0.472832 1.7221538,0.472832 l 0.4727942,4.2554025 0.9455892,0.473 0.9455883,-0.472888 0.945589,0.472888 0.9455893,-0.472888 0.94559,0.472888 0.945587,-0.472888 0.945588,0.472888 0.945588,-0.472888 0.472795,-4.2555145 c 0,0 0.843976,0.0082 1.722155,-0.472843 0.878178,-0.481106 -3.84973,-7.1598439 -5.977302,-7.1598439 z"
+         sodipodi:nodetypes="zzccccccccccczz" />
+      <g
+         id="g3928"
+         inkscape:label="eyes"
+         transform="matrix(0.89346977,0,0,0.89354038,3.0186224,1.8021594)"
+         style="stroke-width:1.11918">
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.18447;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="circle3916"
+           cx="7.0114584"
+           cy="6.8791928"
+           rx="2.1950617"
+           ry="2.3151042" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.18447;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="circle3918"
+           cx="9.921875"
+           cy="6.8791928"
+           rx="2.1950617"
+           ry="2.3151042" />
+        <ellipse
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.18447;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="ellipse3920"
+           cx="7.0114584"
+           cy="6.6063151"
+           rx="1.8520833"
+           ry="1.8520834" />
+        <ellipse
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.18447;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="ellipse3922"
+           cx="9.921875"
+           cy="6.6063151"
+           rx="1.8520833"
+           ry="1.8520834" />
+        <circle
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.18447;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="circle3924"
+           cx="7.0114584"
+           cy="5.953125"
+           r="0.92604166" />
+        <circle
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.18447;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="circle3926"
+           cx="9.921875"
+           cy="5.953125"
+           r="0.92604166" />
+      </g>
+      <path
+         id="path297"
+         style="fill:#efb876;fill-opacity:1;stroke:#de871c;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 3.0763751,9.9946207 c -0.9829389,0 -3.16722847,3.0855773 -2.76151087,3.3078483 0.4057177,0.222271 0.79563397,0.218448 0.79563397,0.218448 l 0.2184306,0.90777 0.4368616,0.218526 0.4368611,-0.218474 0.4368615,0.218474 0.4368616,-0.218474 0.436862,0.218474 0.4368606,-0.218474 0.436861,0.218474 0.4368612,-0.218474 0.2184305,-0.907822 c 0,0 0.389917,0.0038 0.7956343,-0.218453 C 6.2436022,13.080193 4.059312,9.9946207 3.0763751,9.9946207 Z"
+         sodipodi:nodetypes="zzccccccccccczz" />
+    </g>
+  </g>
+  <metadata
+     id="metadata11771">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

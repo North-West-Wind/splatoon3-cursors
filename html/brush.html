@@ -1,0 +1,112 @@
+<html>
+
+<head>
+	<title>brush & pencil showcase</title>
+	<style>
+		@font-face {
+			font-family: Splatoon;
+			src: url("./BlitzBold.otf");
+		}
+
+		body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			font-family: Splatoon;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+		}
+
+		#brush {
+			cursor: url("../images/128x128/draft.png") 6 6, auto;
+		}
+
+		#pencil {
+			cursor: url("../images/128x128/pencil.png") 4 124, auto;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="brush"></canvas>
+	<canvas id="pencil"></canvas>
+	<script>
+		const brush = document.getElementById("brush");
+		brush.width = 960;
+		brush.height = 1080;
+		const brushCtx = brush.getContext("2d");
+		const pencil = document.getElementById("pencil");
+		pencil.width = 960;
+		pencil.height = 1080;
+		const pencilCtx = pencil.getContext("2d");
+		brushCtx.lineWidth = 50;
+		brushCtx.strokeStyle = brushCtx.fillStyle = "#1a1aae";
+		
+		const prevBrushPosition = { x: 0, y: 0 };
+		var mouseDown = false;
+		brush.addEventListener("mousedown", ev => {
+			prevBrushPosition.x = ev.clientX;
+			prevBrushPosition.y = ev.clientY;
+			mouseDown = true;
+		});
+		const brushSound = new Audio("./sound/brush.wav");
+		brushSound.loop = true;
+		var timeout;
+		brush.addEventListener("mousemove", ev => {
+			if (mouseDown) {
+				brushCtx.beginPath();
+				brushCtx.moveTo(prevBrushPosition.x, prevBrushPosition.y);
+				brushCtx.lineTo(ev.clientX, ev.clientY);
+				brushCtx.closePath();
+				brushCtx.stroke();
+				brushCtx.beginPath();
+				brushCtx.arc(prevBrushPosition.x, prevBrushPosition.y, 25, 0, Math.PI * 2);
+				brushCtx.arc(ev.clientX, ev.clientY, 25, 0, Math.PI * 2);
+				brushCtx.fill();
+				prevBrushPosition.x = ev.clientX;
+				prevBrushPosition.y = ev.clientY;
+
+				if (brushSound.paused) brushSound.play();
+				if (timeout) window.clearTimeout(timeout);
+				timeout = window.setTimeout(() => {
+					brushSound.pause();
+					brushSound.currentTime = 0;
+				}, 100);
+			}
+		});
+		brush.addEventListener("mouseup", ev => {
+			mouseDown = false;
+		});
+
+		const img = new Image();
+		img.src = "./inkscape/splash.svg";
+		pencilCtx.fillStyle = "#e38d24";
+		pencil.addEventListener("mousedown", ev => {
+			//pencilCtx.beginPath();
+			//pencilCtx.arc(ev.clientX - 960, ev.clientY, 100, 0, Math.PI * 2);
+			//pencilCtx.fill();
+			pencilCtx.translate(ev.clientX - 960, ev.clientY);
+			pencilCtx.rotate(Math.random() * Math.PI * 2);
+			pencilCtx.drawImage(img, -100, -100, 200, 200);
+			pencilCtx.resetTransform();
+
+			new Audio("./sound/pencil.wav").play();
+		});
+	</script>
+</body>
+
+</html>

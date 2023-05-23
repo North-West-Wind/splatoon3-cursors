@@ -1,0 +1,92 @@
+<html>
+
+<head>
+	<title>resize showcase</title>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			cursor: progress;
+		}
+
+		#top-left {
+			cursor: nw-resize;
+		}
+
+		#top {
+			cursor: n-resize;
+		}
+
+		#top-right {
+			cursor: ne-resize;
+		}
+
+		#left {
+			cursor: w-resize;
+		}
+
+		#mid {
+			cursor: progress;
+		}
+
+		#right {
+			cursor: e-resize;
+		}
+
+		#bottom-left {
+			cursor: sw-resize;
+		}
+
+		#bottom {
+			cursor: s-resize;
+		}
+
+		#bottom-right {
+			cursor: se-resize;
+		}
+	</style>
+</head>
+
+<body>
+	<svg width="1920" height="1080" version="1.1" viewBox="0 0 508 285.75" xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink">
+		<defs>
+			<linearGradient id="a" x1="2.1167" x2="2.1167" y2="4.2333" gradientTransform="matrix(67.5 0 0 67.5 111.13 0)"
+				gradientUnits="userSpaceOnUse">
+				<stop stop-color="#ed82d1" offset="0" />
+				<stop stop-color="#fff" offset=".19522" />
+				<stop stop-color="#fff" offset=".79778" />
+				<stop stop-color="#8fd06a" offset="1" />
+			</linearGradient>
+		</defs>
+		<g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5" stroke-width="5.2917">
+			<rect x="111.12" width="285.75" height="285.75" fill="url(#a)" style="paint-order:fill markers stroke" />
+			<g fill-opacity="0">
+				<rect id="top-left" x="111.12" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="top" x="206.38" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="top-right" x="301.62" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="right" x="301.62" y="95.25" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="mid" x="206.38" y="95.25" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="left" x="111.12" y="95.25" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="bottom-left" x="111.12" y="190.5" width="95.25" height="95.25"
+					style="paint-order:fill markers stroke" />
+				<rect id="bottom" x="206.38" y="190.5" width="95.25" height="95.25" style="paint-order:fill markers stroke" />
+				<rect id="bottom-right" x="301.62" y="190.5" width="95.25" height="95.25"
+					style="paint-order:fill markers stroke" />
+			</g>
+		</g>
+	</svg>
+
+	<script>
+		window.onclick = () => {
+			new Audio("./sound/now_or_never.mp3").play();
+		}
+	</script>
+</body>
+
+</html>

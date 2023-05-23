@@ -1,0 +1,104 @@
+<html>
+
+<head>
+	<title>grab showcase</title>
+	<style>
+		@font-face {
+			font-family: Splatoon;
+			src: url("./BlitzBold.otf");
+		}
+
+		body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			font-family: Splatoon;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+		}
+
+		.grab {
+			cursor: url("../images/128x128/openhand.png") 64 64, grab;
+		}
+
+		.grabbing {
+			cursor: url("../images/128x128/dnd-move.png") 64 64, grab;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="canvas" class="grab"></canvas>
+	<script>
+		const canvas = document.getElementById("canvas");
+		canvas.width = 1920;
+		canvas.height = 1080;
+		const ctx = canvas.getContext("2d");
+
+		const mousePos = { x: 0, y: 0 };
+		const translate = { x: 0, y: 0 };
+		const position = { x: Math.random() * canvas.width / 2 + 100, y: Math.random() * canvas.height / 2 + 100 };
+		canvas.addEventListener("mousedown", ev => {
+			new Audio("./sound/egg_get.wav").play();
+			mousePos.x = ev.clientX;
+			mousePos.y = ev.clientY;
+			canvas.className = "grabbing";
+		});
+		canvas.addEventListener("mousemove", ev => {
+			if (canvas.className == "grabbing") {
+				translate.x = ev.clientX - mousePos.x;
+				translate.y = ev.clientY - mousePos.y;
+			}
+		});
+		canvas.addEventListener("mouseup", ev => {
+			canvas.className = "grab";
+			position.x += translate.x;
+			position.y += translate.y;
+			translate.x = translate.y = 0;
+			if (position.x >= 1920 - 540 && position.y >= 540) {
+				position.x = Math.random() * canvas.width / 2 + 100;
+				position.y = Math.random() * canvas.height / 2 + 100;
+				new Audio("./sound/egg.wav").play();
+			}
+		});
+
+		const basket = new Image();
+		basket.src = "./inkscape/basket.svg";
+		basket.onload = () => basket.loaded = true;
+
+		const egg = new Image();
+		egg.src = "./image/egg.png";
+		egg.onload = () => egg.loaded = true;
+
+		function animate() {
+			ctx.fillStyle = "white";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			if (basket.loaded) ctx.drawImage(basket, 1920 - 540, 540, 540, 540);
+
+			if (egg.loaded) {
+				ctx.translate(position.x + translate.x, position.y + translate.y);
+				ctx.drawImage(egg, -egg.width / 2, -egg.height / 2, egg.width, egg.height);
+				ctx.resetTransform();
+			}
+
+			requestAnimationFrame(animate);
+		}
+		animate();
+	</script>
+</body>
+
+</html>

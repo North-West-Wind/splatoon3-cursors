@@ -1,0 +1,44 @@
+<html>
+
+<head>
+	<title>zoom showcase</title>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+
+		.zoom-out {
+			background-image: url("./image/zoom-out.jpg");
+			cursor: url("../images/128x128/zoom-in.png") 80 56, zoom-in;
+		}
+
+		.zoom-in {
+			background-image: url("./image/zoom-in.jpg");
+			cursor: url("../images/128x128/zoom-out.png") 104 88, zoom-out;
+		}
+	</style>
+</head>
+
+<body class="zoom-out">
+	<script>
+		window.onclick = () => {
+			if (document.body.className == "zoom-out") {
+				document.body.className = "zoom-in";
+				new Audio("./sound/zoom-in.wav").play();
+			} else {
+				document.body.className = "zoom-out";
+				new Audio("./sound/zoom-out.wav").play();
+			}
+		}
+	</script>
+</body>
+
+</html>

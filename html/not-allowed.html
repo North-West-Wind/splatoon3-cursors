@@ -1,0 +1,42 @@
+<html>
+
+<head>
+	<title>not-allowed showcase</title>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			cursor: url("../images/128x128/right_ptr.png") 102 26, auto;
+		}
+
+		#water {
+			cursor: url("../images/128x128/not-allowed.png") 102 26, not-allowed;
+		}
+	</style>
+</head>
+
+<body>
+	<svg width="1920" height="1080" version="1.1" viewBox="0 0 508 285.75" xmlns="http://www.w3.org/2000/svg">
+		<g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5" stroke-width="5.2917">
+			<path id="water"
+				d="m185.59 111.68s13.331-4.1254 19.065-4.2048c5.7335-0.0794 7.6329 2.6938 14.615 2.8014s16.758-4.4903 26.677-4.2654c9.9191 0.22491 22.377 7.0701 31.841 6.5834 9.4639-0.48668 15.505-6.718 23.209-7.3488s21.81 3.146 21.81 3.146l-15.885 135.02h-105.83z"
+				fill="#59a1eb" stroke="#1b7ee2" style="paint-order:fill markers stroke" />
+			<path d="m328.08 63.5-21.167 179.92h-105.83l-21.167-179.92" fill="none" stroke="#000"
+				style="paint-order:fill markers stroke" />
+		</g>
+	</svg>
+
+	<script>
+		const water = document.getElementById("water");
+		water.addEventListener("mouseenter", () => {
+			new Audio("./sound/dead.wav").play();
+		});
+	</script>
+</body>
+
+</html>

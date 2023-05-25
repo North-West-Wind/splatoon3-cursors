@@ -27,8 +27,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="8.5569444"
-     inkscape:cx="21.15241"
-     inkscape:cy="27.521506"
+     inkscape:cx="33.656874"
+     inkscape:cy="27.638371"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
@@ -42,7 +42,8 @@
        id="path3914-8"
        style="fill:#b3f198;fill-opacity:1;stroke:#50c719;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 4.357902,12.575463 c 1.299236,1.299235 8.264557,0.108247 8.022056,-0.721797 -0.242501,-0.830044 -0.76294,-1.340378 -0.76294,-1.340378 L 13.926719,7.6261494 13.638103,6.7598893 12.771911,6.4712053 12.483227,5.6050133 11.617035,5.3163293 11.328351,4.4501373 10.462159,4.1614523 10.173475,3.2952623 9.307283,3.0065773 6.420078,5.3163463 c 0,0 -0.510367,-0.520406 -1.340385,-0.762933 C 4.249649,4.3109113 3.058667,11.276228 4.357902,12.575463 Z"
-       sodipodi:nodetypes="zzccccccccccczz" /><g
+       sodipodi:nodetypes="zzccccccccccczz"
+       inkscape:label="main" /><g
        id="g3928"
        inkscape:label="eyes"
        transform="matrix(-0.52349989,-0.52349994,0.52349989,-0.52349994,8.506667,17.291297)"
@@ -83,7 +84,8 @@
          r="0.92604166" /></g><path
        style="color:#000000;fill:#50c719;fill-opacity:1;stroke:#378613;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="M 1.323177,6.1003901 A 1.0584408,1.0584408 0 0 0 0.26458333,7.1433588 V 15.610156 A 1.0584408,1.0584408 0 0 0 1.323177,16.66875 H 9.7899739 A 1.0584408,1.0584408 0 0 0 10.694271,15.084765 1.0584408,1.0584408 0 0 0 9.7899739,14.551562 H 2.3817708 V 7.1433588 A 1.0584408,1.0584408 0 0 0 1.323177,6.1003901 Z"
-       id="path856" /></g><metadata
+       id="path856"
+       inkscape:label="sub" /></g><metadata
      id="metadata132"><rdf:RDF><cc:Work
          rdf:about=""><cc:license
            rdf:resource="http://creativecommons.org/licenses/by-nc/4.0/" /></cc:Work><cc:License

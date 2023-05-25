@@ -27,8 +27,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="8.5569444"
-     inkscape:cx="-43.239734"
-     inkscape:cy="27.521506"
+     inkscape:cx="25.476384"
+     inkscape:cy="27.638371"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
@@ -39,10 +39,11 @@
      inkscape:label="圖層 1"
      inkscape:groupmode="layer"
      id="layer1"><path
-       id="path3914-8"
+       id="main"
        style="fill:#b3f198;fill-opacity:1;stroke:#50c719;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 8.4666665,16.66875 c -1.8373967,-1e-6 -5.9204661,-5.767383 -5.1620624,-6.182839 0.7584037,-0.415455 1.4872702,-0.40831 1.4872702,-0.40831 l 0.4083101,-6.3205491 0.8166206,-0.408455 0.8166205,0.408359 0.8166208,-0.408359 0.8166201,0.408359 0.8166212,-0.408359 0.8166214,0.408359 0.816619,-0.408359 0.816621,0.408359 0.408309,6.3206441 c 0,0 0.728867,-0.0071 1.487271,0.408321 0.758404,0.415455 -3.324666,6.182829 -5.1620625,6.182829 z"
-       sodipodi:nodetypes="zzccccccccccczz" /><g
+       sodipodi:nodetypes="zzccccccccccczz"
+       inkscape:label="main" /><g
        id="g3928"
        inkscape:label="eyes"
        transform="matrix(0.74034068,-3.5355339e-8,3.5355339e-8,-0.74034068,2.1984489,17.069728)"

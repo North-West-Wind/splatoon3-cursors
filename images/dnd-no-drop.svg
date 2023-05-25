@@ -30,14 +30,14 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="8.5569444"
-     inkscape:cx="17.062165"
-     inkscape:cy="30.676838"
+     inkscape:cx="20.217497"
+     inkscape:cy="30.793702"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g3930" />
+     inkscape:current-layer="main" />
   <defs
      id="defs11647">
     <mask
@@ -55,9 +55,10 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g3930"
-       inkscape:label="mid_ptr"
-       transform="matrix(1,0,0,-1,0,16.933333)">
+       id="main"
+       inkscape:label="main"
+       transform="matrix(1,0,0,-1,0,16.933333)"
+       style="fill:#aef4f0;fill-opacity:1;stroke:#41e5dd;stroke-opacity:1">
       <path
          id="path3914-9"
          style="fill:#aef4f0;fill-opacity:1;stroke:#41e5dd;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -67,15 +68,16 @@
          id="g7564"
          inkscape:label="cross"
          mask="url(#mask18198)"
-         transform="rotate(180,8.4234949,9.0621832)">
+         transform="rotate(180,8.4234949,9.0621832)"
+         style="fill:#aef4f0;fill-opacity:1;stroke:#41e5dd;stroke-opacity:1">
         <path
            id="rect946"
-           style="fill:#f13d3d;stroke:#41e5dd;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           style="fill:#aef4f0;stroke:#41e5dd;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke;fill-opacity:1"
            d="M 5.1832293,6.9821863 13.01053,10.757655 Z"
            sodipodi:nodetypes="ccc" />
         <path
            id="rect948"
-           style="fill:#f13d3d;stroke:#41e5dd;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           style="fill:#aef4f0;stroke:#41e5dd;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke;fill-opacity:1"
            d="M 3.7501153,10.757638 11.577425,6.9821832 Z"
            sodipodi:nodetypes="ccc" />
       </g>

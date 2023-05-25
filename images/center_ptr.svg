@@ -30,8 +30,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="8.5569445"
-     inkscape:cx="31.670183"
-     inkscape:cy="31.378023"
+     inkscape:cx="6.7781204"
+     inkscape:cy="31.494887"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
@@ -48,10 +48,11 @@
        id="g3930"
        inkscape:label="mid_ptr">
       <path
-         id="path3914"
+         id="main"
          style="fill:#f4eb68;fill-opacity:1;stroke:#d9cc10;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 8.4666665,1.5497512 c -2.3812499,0 -7.67287434,7.474479 -6.6899895,8.0129061 0.9828849,0.5384267 1.9274896,0.5291667 1.9274896,0.5291667 l 0.5291666,4.762406 1.0583334,0.529355 1.0583333,-0.52923 1.0583334,0.52923 1.0583328,-0.52923 1.0583338,0.52923 1.0583341,-0.52923 1.058332,0.52923 1.058334,-0.52923 0.529166,-4.762531 c 0,0 0.944605,0.0092 1.92749,-0.5291788 0.982885,-0.5384271 -4.30874,-8.012894 -6.6899895,-8.012894 z"
-         sodipodi:nodetypes="zzccccccccccczz" />
+         sodipodi:nodetypes="zzccccccccccczz"
+         inkscape:label="main" />
       <g
          id="g3928"
          inkscape:label="eyes"

@@ -30,8 +30,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="4.2784723"
-     inkscape:cx="14.023697"
-     inkscape:cy="26.995617"
+     inkscape:cx="20.334361"
+     inkscape:cy="27.229345"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
@@ -46,16 +46,16 @@
      id="layer1">
     <g
        id="main"
-       style="fill:#efb876;fill-opacity:1;stroke:#de871c;stroke-opacity:1"
+       style="fill:#efb876;fill-opacity:1;stroke:#de871c;stroke-opacity:1;stroke-width:0.52916666;stroke-dasharray:none"
        inkscape:label="main">
       <path
          id="path3914"
-         style="fill:#efb876;fill-opacity:1;stroke:#de871c;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         style="fill-opacity:1;paint-order:fill markers stroke;stroke-width:0.52916666;stroke-dasharray:none"
          d="m 10.583335,2.2861236 c -2.1275763,0 -6.8554827,6.6787489 -5.9773048,7.1598549 0.8781781,0.481106 1.7221538,0.472832 1.7221538,0.472832 l 0.4727942,4.2554025 0.9455892,0.473 0.9455883,-0.472888 0.945589,0.472888 0.9455893,-0.472888 0.94559,0.472888 0.945587,-0.472888 0.945588,0.472888 0.945588,-0.472888 0.472795,-4.2555145 c 0,0 0.843976,0.0082 1.722155,-0.472843 0.878178,-0.481106 -3.84973,-7.1598439 -5.977302,-7.1598439 z"
          sodipodi:nodetypes="zzccccccccccczz" />
       <path
          id="path297"
-         style="fill:#efb876;fill-opacity:1;stroke:#de871c;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         style="fill-opacity:1;paint-order:fill markers stroke;stroke-width:0.52916666;stroke-dasharray:none"
          d="m 3.0763751,9.9946207 c -0.9829389,0 -3.16722847,3.0855773 -2.76151087,3.3078483 0.4057177,0.222271 0.79563397,0.218448 0.79563397,0.218448 l 0.2184306,0.90777 0.4368616,0.218526 0.4368611,-0.218474 0.4368615,0.218474 0.4368616,-0.218474 0.436862,0.218474 0.4368606,-0.218474 0.436861,0.218474 0.4368612,-0.218474 0.2184305,-0.907822 c 0,0 0.389917,0.0038 0.7956343,-0.218453 C 6.2436022,13.080193 4.059312,9.9946207 3.0763751,9.9946207 Z"
          sodipodi:nodetypes="zzccccccccccczz" />
     </g>

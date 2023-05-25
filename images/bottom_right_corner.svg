@@ -27,8 +27,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="8.5569444"
-     inkscape:cx="11.335822"
-     inkscape:cy="27.755235"
+     inkscape:cx="-13.556241"
+     inkscape:cy="27.872099"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
@@ -39,7 +39,7 @@
      inkscape:label="圖層 1"
      inkscape:groupmode="layer"
      id="layer1"><path
-       id="path3914-8"
+       id="main"
        style="fill:#b3f198;fill-opacity:1;stroke:#50c719;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 12.575431,12.575462 c -1.299236,1.299235 -8.2645574,0.108247 -8.0220564,-0.721797 0.242501,-0.830044 0.76294,-1.340378 0.76294,-1.340378 l -2.309701,-2.8871381 0.288616,-0.8662601 0.866192,-0.288684 0.288684,-0.866192 0.866192,-0.288684 0.288684,-0.866192 0.866192,-0.288685 0.288684,-0.86619 0.866192,-0.288685 2.8872054,2.309769 c 0,0 0.510367,-0.520406 1.340385,-0.762933 0.830044,-0.242502 2.021025,6.7228142 0.721791,8.0220492 z"
        sodipodi:nodetypes="zzccccccccccczz"
@@ -84,7 +84,7 @@
          r="0.92604166" /></g><path
        style="color:#000000;fill:#50c719;fill-opacity:1;stroke:#378613;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 15.610155,6.1003896 a 1.0584408,1.0584408 0 0 1 1.058594,1.0429687 v 8.4667967 a 1.0584408,1.0584408 0 0 1 -1.058594,1.058594 H 7.1433587 A 1.0584408,1.0584408 0 0 1 6.2390616,15.084764 1.0584408,1.0584408 0 0 1 7.1433587,14.551561 H 14.551561 V 7.1433583 a 1.0584408,1.0584408 0 0 1 1.058594,-1.0429687 z"
-       id="path856"
+       id="sub"
        inkscape:label="sub" /></g><metadata
      id="metadata132"><rdf:RDF><cc:Work
          rdf:about=""><cc:license

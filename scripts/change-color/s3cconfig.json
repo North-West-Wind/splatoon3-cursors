@@ -1,12 +1,63 @@
 {
   "all": "f4eb68",
-	"groups": {
-		"ptr": ["alias", "center_ptr", "context-menu", "copy", "help", "left_ptr", "no-drop", "right_ptr"],
-		"hand": ["dnd-move", "dnd-no-drop", "openhand", "pointer"],
-		"resize": ["all-scroll", "col-resize", "row-resize", "size_bdiag", "size_fdiag", "size_hor", "size_ver"],
-		"arrow": ["bottom_left_corner", "bottom_right_corner", "bottom_side", "down-arrow", "left_side", "left-arrow", "right_side", "right-arrow", "top_left_corner", "top_right_corner", "top_side", "up-arrow"],
-		"zoom": ["zoom-in", "zoom-out"]
-	},
+  "groups": {
+    "ptr": [
+      "alias",
+      "center_ptr",
+      "context-menu",
+      "copy",
+      "help",
+      "left_ptr",
+      "no-drop",
+      "right_ptr",
+      "progress_1",
+      "progress_3",
+      "progress_5",
+      "progress_6",
+      "progress_7",
+      "progress_8",
+      "progress_9",
+      "progress_10",
+      "progress_11",
+      "progress_12",
+      "progress_13",
+      "progress_14",
+      "progress_15"
+    ],
+    "hand": [
+      "dnd-move",
+      "dnd-no-drop",
+      "openhand",
+      "pointer"
+    ],
+    "resize": [
+      "all-scroll",
+      "col-resize",
+      "row-resize",
+      "size_bdiag",
+      "size_fdiag",
+      "size_hor",
+      "size_ver"
+    ],
+    "arrow": [
+      "bottom_left_corner",
+      "bottom_right_corner",
+      "bottom_side",
+      "down-arrow",
+      "left_side",
+      "left-arrow",
+      "right_side",
+      "right-arrow",
+      "top_left_corner",
+      "top_right_corner",
+      "top_side",
+      "up-arrow"
+    ],
+    "zoom": [
+      "zoom-in",
+      "zoom-out"
+    ]
+  },
   "group": {
     "ptr": "f4eb68",
     "hand": "aef4f0",
@@ -65,8 +116,8 @@
     "not-allowed": "f13d3d"
   },
   "sub": {
-    "col-resize": "ffcc4d",
-    "row-resize": "ffcc4d",
+    "col-resize": "fd8c0d",
+    "row-resize": "fd8c0d",
     "bottom_left_corner": "50c719",
     "bottom_right_corner": "50c719",
     "bottom_side": "50c719",
@@ -75,46 +126,150 @@
     "top_left_corner": "50c719",
     "top_right_corner": "50c719",
     "top_side": "50c719",
-
-		"alias": "c47dd0",
-		"copy": "2ec5b7",
-		"help": "435ece"
+    "alias": "c47dd0",
+    "copy": "2ec5b7",
+    "help": "435ece"
   },
   "subgroup": {
     "resize": "ffcc4d",
     "arrow": "50c719"
   },
-	"subgroups": {
-		"resize": ["col-resize", "row-resize"],
-		"arrow": ["bottom_left_corner", "bottom_right_corner", "bottom_side", "left_side", "right_side", "top_left_corner", "top_right_corner", "top_side"]
-	},
-	"exclude": ["cell", "crosshair", "draft", "pencil", "text", "vertical-text"],
-	"loading": ["5330d2", "c4ec2f"],
-	"symlinks": {
-		"default": ["arrow", "left_ptr", "top_left_arrow"],
-		"alias": ["link"],
-		"not-allowed": ["circle", "crossed_circle", "pirate", "X_cursor", "x-cursor"],
-		"dnd-move": ["closedhand", "dnd-none", "grabbing", "move"],
-		"crosshair": ["cross"],
-		"copy": ["dnd-copy"],
-		"size_hor": ["e-resize", "ew-resize", "h_double_arrow", "sb_h_double_arrow", "size-hor", "w-resize"],
-		"all-scroll": ["fleur", "size_all"],
-		"no-drop": ["forbidden"],
-		"openhand": ["grab"],
-		"progress": ["half-busy", "left_ptr_watch"],
-		"pointer": ["hand", "hand1", "hand2", "pointing_hand"],
-		"text": ["ibeam", "xterm"],
-		"help": ["left_ptr_help", "question_arrow", "whats_this"],
-		"bottom_left_corner": ["ll_angle"],
-		"bottom_right_corner": ["lr_angle"],
-		"size_ver": ["n-resize", "ns-resize", "s-resize", "sb_v_double_arrow", "size-ver", "v_double_arrow"],
-		"size_bdiag": ["ne-resize", "nesw-resize", "size-bdiag", "sw-resize"],
-		"size_fdiag": ["nw-resize", "nwse-resize", "se-resize", "size-fdiag"],
-		"cell": ["plus"],
-		"col-resize": ["split_h"],
-		"row-resize": ["split_v"],
-		"top_left_corner": ["ul_angle"],
-		"top_right_corner": ["ur_angle"],
-		"wait": ["watch"]
-	}
+  "subgroups": {
+    "resize": [
+      "col-resize",
+      "row-resize"
+    ],
+    "arrow": [
+      "bottom_left_corner",
+      "bottom_right_corner",
+      "bottom_side",
+      "left_side",
+      "right_side",
+      "top_left_corner",
+      "top_right_corner",
+      "top_side"
+    ]
+  },
+  "exclude": [
+    "cell",
+    "crosshair",
+    "draft",
+    "pencil",
+    "text",
+    "vertical-text"
+  ],
+  "loading": [
+    "5330d2",
+    "c4ec2f"
+  ],
+  "symlinks": {
+    "default": [
+      "arrow",
+      "left_ptr",
+      "top_left_arrow"
+    ],
+    "alias": [
+      "link"
+    ],
+    "not-allowed": [
+      "circle",
+      "crossed_circle",
+      "pirate",
+      "X_cursor",
+      "x-cursor"
+    ],
+    "dnd-move": [
+      "closedhand",
+      "dnd-none",
+      "grabbing",
+      "move"
+    ],
+    "crosshair": [
+      "cross"
+    ],
+    "copy": [
+      "dnd-copy"
+    ],
+    "size_hor": [
+      "e-resize",
+      "ew-resize",
+      "h_double_arrow",
+      "sb_h_double_arrow",
+      "size-hor",
+      "w-resize"
+    ],
+    "all-scroll": [
+      "fleur",
+      "size_all"
+    ],
+    "no-drop": [
+      "forbidden"
+    ],
+    "openhand": [
+      "grab"
+    ],
+    "progress": [
+      "half-busy",
+      "left_ptr_watch"
+    ],
+    "pointer": [
+      "hand",
+      "hand1",
+      "hand2",
+      "pointing_hand"
+    ],
+    "text": [
+      "ibeam",
+      "xterm"
+    ],
+    "help": [
+      "left_ptr_help",
+      "question_arrow",
+      "whats_this"
+    ],
+    "bottom_left_corner": [
+      "ll_angle"
+    ],
+    "bottom_right_corner": [
+      "lr_angle"
+    ],
+    "size_ver": [
+      "n-resize",
+      "ns-resize",
+      "s-resize",
+      "sb_v_double_arrow",
+      "size-ver",
+      "v_double_arrow"
+    ],
+    "size_bdiag": [
+      "ne-resize",
+      "nesw-resize",
+      "size-bdiag",
+      "sw-resize"
+    ],
+    "size_fdiag": [
+      "nw-resize",
+      "nwse-resize",
+      "se-resize",
+      "size-fdiag"
+    ],
+    "cell": [
+      "plus"
+    ],
+    "col-resize": [
+      "split_h"
+    ],
+    "row-resize": [
+      "split_v"
+    ],
+    "top_left_corner": [
+      "ul_angle"
+    ],
+    "top_right_corner": [
+      "ur_angle"
+    ],
+    "wait": [
+      "watch"
+    ]
+  }
 }

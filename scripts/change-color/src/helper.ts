@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+import { spawn } from "child_process";
 
 const PNG = require("png-js");
 
@@ -19,9 +19,24 @@ export function decode(path: string) {
 	return new Promise<number[]>(res => PNG.decode(path, res));
 }
 
-// Promisified exec
-export function execute(command: string) {
-	return new Promise(res => {
-		exec(command, res);
+// Promisified spawn
+export function execute(command: string, args: string[], verbose = false) {
+	return new Promise<void>((res, rej) => {
+		const proc = spawn(command, args);
+		
+		if (verbose) {
+			proc.stdout.on('data', (data) => {
+				process.stdout.write(`stdout: ${data}`);
+			});
+	
+			proc.stderr.on('data', (data) => {
+				process.stderr.write(`stderr: ${data}`);
+			});
+		}
+
+		proc.on("close", signal => {
+			if (!signal) res();
+			else rej(signal);
+		});
 	});
 }

@@ -33,6 +33,7 @@ const subcolor: { [key: string]: string } = {
 }
 
 const config = JSON.parse(fs.readFileSync("s3cconfig.json", { encoding: "utf8" }));
+config.groups = GROUPS;
 for (const group in GROUPS) {
 	for (const cur of GROUPS[group]) {
 		config.individual[cur] = color[group];

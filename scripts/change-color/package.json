@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "test": "ts-node src/index.ts",
-    "dist-linux": "tsc && nexe out/index.js -b -o dist/splatcur-editor"
+    "dist-linux": "tsc && ts-node src/test/fix.ts && pkg out/index.js -o dist/splatcur-editor -t node16-linux-x64",
+    "dist-win": "tsc && ts-node src/test/fix.ts && pkg out/index.js -o dist/splatcur-editor -t node16-win-x64"
   },
   "author": "NorthWestWind",
   "license": "GPL-3.0-or-later",

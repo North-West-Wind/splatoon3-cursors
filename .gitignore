@@ -7,4 +7,4 @@ wincur
 scripts/**/node_modules
 scripts/**/tmp
 scripts/loading_animator/frames
-scripts/change-color/lib
+scripts/splatcur-editor/lib

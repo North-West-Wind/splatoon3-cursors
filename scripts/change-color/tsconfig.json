@@ -4,7 +4,7 @@
 			"module": "commonjs",
 			"moduleResolution": "node",
 			"declaration": true,
-			"outDir": "./out",
+			"outDir": "./lib",
 			"strict": true,
 			"sourceMap": true,
 			"esModuleInterop": true

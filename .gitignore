@@ -7,5 +7,4 @@ wincur
 scripts/**/node_modules
 scripts/**/tmp
 scripts/loading_animator/frames
-scripts/change-color/dist
-scripts/change-color/out
+scripts/change-color/lib

@@ -295,7 +295,12 @@ async function convert() {
 	// Make links
 	for (const file in config.symlinks)
 		for (const link of config.symlinks[file])
-			fs.symlinkSync(path.join("tmp/cursors", file), path.join("tmp/cursors", link));
+			try {
+				fs.symlinkSync(path.join("tmp/cursors", file), path.join("tmp/cursors", link));
+			} catch (err) {
+				// If we can't use symlink, fallback to copy
+				fs.cpSync(path.join("tmp/cursors", file), path.join("tmp/cursors", link));
+			}
 
 	if (options.windows) x2win();
 }

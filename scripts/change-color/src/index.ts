@@ -40,9 +40,9 @@ const options = program.parse().opts();
 // Check if config exists
 var config: any;
 var copyConfig = false;
-if (!fs.existsSync("s3scconfig.json")) {
+if (!fs.existsSync("s3cconfig.json")) {
 	if (!options.download) {
-		console.log("s3scconfig.json is not found with no-download option enabled. Nothing can be done. Bye.");
+		console.log("s3cconfig.json is not found with no-download option enabled. Nothing can be done. Bye.");
 		process.exit(1);
 	}
 	copyConfig = true;
@@ -83,7 +83,7 @@ else {
 		fs.renameSync("tmp/splatoon3-cursors/scripts/loading_animator/loading.png", "tmp/loading.png");
 		// If there's no config, also take it from repo
 		if (copyConfig) {
-			fs.renameSync("tmp/splatoon3-cursors/scripts/change-color/s3cconfig.json", "s3scconfig.json");
+			fs.renameSync("tmp/splatoon3-cursors/scripts/change-color/s3cconfig.json", "s3cconfig.json");
 			config = JSON.parse(fs.readFileSync("s3cconfig.json", { encoding: "utf8" }));
 		}
 		// Removed the clone

@@ -1,6 +1,6 @@
 {
   "name": "splatcur-editor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A script to generate NorthWestWind's Splatoon cursor pack with different colors.",
   "main": "lib/index.js",
   "bin": "lib/index.js",

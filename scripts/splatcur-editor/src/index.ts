@@ -109,7 +109,7 @@ function clone() {
 		fs.renameSync("tmp/splatoon3-cursors/scripts/loading_animator/loading.png", "tmp/loading.png");
 		// If there's no config, also take it from repo
 		if (copyConfig) {
-			fs.renameSync("tmp/splatoon3-cursors/scripts/change-color/s3cconfig.json", "s3cconfig.json");
+			fs.renameSync("tmp/splatoon3-cursors/scripts/splatcur-editor/s3cconfig.json", "s3cconfig.json");
 			config = JSON.parse(fs.readFileSync("s3cconfig.json", { encoding: "utf8" }));
 			log.info("Only git clone is run this time in order to pull in s3cconfig.json. Next run will generate everything.");
 		}

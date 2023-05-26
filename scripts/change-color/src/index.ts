@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { SVG, SVGTypeMapping, registerWindow } from '@svgdotjs/svg.js'
 import * as fs from "fs";
 import * as path from "path";
@@ -10,6 +11,8 @@ import sizeOf from "image-size";
 import commandExists from "command-exists";
 import log from "loglevel";
 import { Option, program } from 'commander';
+import AdmZip from "adm-zip";
+import { Presets, SingleBar } from "cli-progress";
 const { Encoder } = require("xcursor");
 
 // Config
@@ -34,6 +37,8 @@ program
 	.option("-e, --no-export", "skip the process of exporting images")
 	.option("-c, --no-convert", "skip the process of converting images to usable cursor files")
 	.option("-w, --no-windows", "skip the process of converting Xcursors to Windows cursors")
+	.option("-p, --no-package", "skip the process of packing cursors into ZIP files")
+	.option("-r, --no-remove", "skip the process of removing the 'tmp' directory after running")
 	.option("-v, --verbose", "output debug info as well");
 const options = program.parse().opts();
 
@@ -52,11 +57,6 @@ if (!fs.existsSync("s3cconfig.json")) {
 if (options.verbose) log.setDefaultLevel("debug");
 else log.setDefaultLevel("info");
 
-if (!options.download && !options.export && !options.convert && !options.windows) {
-	log.info("There's nothing to do.");
-	process.exit(0);
-}
-
 // Read mode from options
 const mode = options.mode;
 
@@ -68,15 +68,41 @@ else if (options.download) {
 		fs.rmSync(path.join("tmp", file), { recursive: true });
 }
 
-// git clone the repo
-const git = simpleGit("tmp");
-if (!options.download && !options.export && !options.convert) x2win();
-else if (!options.download && !options.export) convert();
-else if (!options.download) exportFiles();
-else {
+const STACK: { [key: string]: (() => void) } = {
+	download: clone,
+	export: exportFiles,
+	convert,
+	windows: x2win,
+	package: pack,
+	remove: clean
+};
+
+const finalStack: (() => void)[] = [];
+
+for (const option in STACK)
+	if (options[option])
+		finalStack.push(STACK[option]);
+
+if (!finalStack.length) {
+	log.info("There's nothing to do. Bye.");
+	process.exit(0);
+}
+
+next();
+
+function next() {
+	const func = finalStack.shift();
+	if (!func) process.exit(0);
+	func();
+}
+
+function clone() {
 	log.info("Cloning repository...");
+	// git clone the repo
+	const git = simpleGit("tmp").outputHandler((_command, stdout) => stdout.pipe(process.stdout));
 	git.clone("https://github.com/North-West-Wind/splatoon3-cursors", undefined, () => {
 		// Move cursor files and images to tmp
+		fs.renameSync("tmp/splatoon3-cursors/index.theme", "tmp/index.theme");
 		fs.renameSync("tmp/splatoon3-cursors/cursor_files", "tmp/cursor_files");
 		fs.renameSync("tmp/splatoon3-cursors/images", "tmp/images");
 		fs.renameSync("tmp/splatoon3-cursors/html/BlitzBold.otf", "tmp/BlitzBold.otf");
@@ -85,13 +111,13 @@ else {
 		if (copyConfig) {
 			fs.renameSync("tmp/splatoon3-cursors/scripts/change-color/s3cconfig.json", "s3cconfig.json");
 			config = JSON.parse(fs.readFileSync("s3cconfig.json", { encoding: "utf8" }));
+			log.info("Only git clone is run this time in order to pull in s3cconfig.json. Next run will generate everything.");
 		}
 		// Removed the clone
 		fs.rmSync("tmp/splatoon3-cursors", { recursive: true });
+		if (copyConfig) process.exit(0);
 
-		if (!options.export && !options.convert && options.windows) x2win();
-		else if (!options.export && options.convert) convert();
-		else if (options.export) exportFiles();
+		next();
 	});
 }
 
@@ -114,9 +140,14 @@ function exportFiles() {
 		for (const group in config.subgroups)
 			subgroupColors[group] = tinycolor(config.subgroup[group]);
 	}
+
 	var draw: SVGTypeMapping<any>;
-	for (const file of fs.readdirSync("tmp/images")) {
-		if (!file.endsWith(".svg")) continue;
+	const files = fs.readdirSync("tmp/images").filter(f => f.endsWith(".svg"));
+	// Setup progress bar
+	const bar = new SingleBar({ clearOnComplete: false, hideCursor: true, format: " {bar} {percentage}% | ETA: {eta}s | {value}/{total}" }, Presets.shades_classic);
+	bar.start(files.length, 0);
+
+	for (const file of files) {
 		// Read SVG
 		log.debug("\nWorking on", file);
 		const name = file.split(".").slice(0, -1).join(".");
@@ -212,7 +243,9 @@ function exportFiles() {
 			log.debug("Exporting to", `${size}x${size}/${name}.png`);
 			fs.writeFileSync(path.join("tmp/images", `${size}x${size}`, name + ".png"), resvg.render().asPng());
 		}
+		bar.increment();
 	}
+	bar.stop();
 
 	// Generate all of the loading animations
 	/// Copied from loading_animator
@@ -225,6 +258,7 @@ function exportFiles() {
 	var count = 0;
 	const img = new Image();
 	img.onload = () => {
+		bar.start(64, 0);
 		for (let ii = 0; ii < 8; ii++) {
 			for (let jj = 0; jj < 8; jj++) {
 				const canvas = new Canvas(128, 128, "image");
@@ -240,13 +274,15 @@ function exportFiles() {
 					smallCtx.drawImage(canvas, 0, 0, smallCanvas.width, smallCanvas.height);
 					fs.writeFileSync(`tmp/frames/${res}x${res}/${twoDigits(count)}.png`, smallCanvas.toBuffer());
 				}
-				log.debug("Generated frame", ++count);
+				count++;
+				bar.increment();
 			}
 		}
+		bar.stop();
 
 		for (const size of SIZES)
 			fs.renameSync(`tmp/frames/${size}x${size}`, `tmp/images/${size}x${size}/wait`);
-		if (options.convert) convert();
+		next();
 	}
 	img.src = "tmp/loading.png";
 }
@@ -255,7 +291,11 @@ async function convert() {
 	log.info("Starting conversion process...");
 	if (fs.existsSync("tmp/cursors")) fs.rmSync("tmp/cursors", { recursive: true });
 	fs.mkdirSync("tmp/cursors");
-	for (const f of fs.readdirSync("tmp/cursor_files")) {
+	// Setup multi bar
+	const cursorFiles = fs.readdirSync("tmp/cursor_files");
+	const bar = new SingleBar({ clearOnComplete: false, hideCursor: true, format: " {bar} {percentage}% | ETA: {eta}s | {value}/{total}" }, Presets.shades_classic);
+	bar.start(cursorFiles.length, 0);
+	for (const f of cursorFiles) {
 		log.debug("Reading cursor file", f);
 		const content = fs.readFileSync(path.join("tmp/cursor_files", f), { encoding: "utf8" });
 		const name = f.split(".").slice(0, -1).join(".");
@@ -263,6 +303,7 @@ async function convert() {
 		for (const line of content.split("\n")) {
 			const [type, xhot, yhot, file, delay] = line.split(" ");
 			if (!file) continue;
+			log.debug("Trying to open", `tmp/images/${file}`);
 			const dimension = sizeOf(`tmp/images/${file}`);
 			const pixels = await decode(`tmp/images/${file}`);
 			for (let ii = 0, n = pixels.length; ii < n; ii += 4) {
@@ -288,21 +329,19 @@ async function convert() {
 		buf[10] = 1;
 		log.debug("Writing to", path.join("tmp/cursors", name));
 		fs.writeFileSync(path.join("tmp/cursors", name), buf);
+
+		bar.increment();
 	}
+	bar.stop();
 
 	fs.cpSync("tmp/cursors", "tmp/cursors_nosym", { recursive: true });
 
 	// Make links
 	for (const file in config.symlinks)
 		for (const link of config.symlinks[file])
-			try {
-				fs.symlinkSync(path.join("tmp/cursors", file), path.join("tmp/cursors", link));
-			} catch (err) {
-				// If we can't use symlink, fallback to copy
-				fs.cpSync(path.join("tmp/cursors", file), path.join("tmp/cursors", link));
-			}
+			fs.cpSync(path.join("tmp/cursors", file), path.join("tmp/cursors", link));
 
-	if (options.windows) x2win();
+	next();
 }
 
 async function x2win() {
@@ -324,4 +363,31 @@ async function x2win() {
 	if (!fs.existsSync("tmp/wincur")) fs.mkdirSync("tmp/wincur");
 	log.debug("Converting Xcursors to Windows cursors");
 	await execute("x2wincur", fs.readdirSync("tmp/cursors_nosym").map(f => `tmp/cursors_nosym/${f}`).concat(["-o", "tmp/wincur"]), options.verbose);
+
+	next();
+}
+
+function pack() {
+	log.info("Putting everything into ZIP files...");
+	const linuxZip = new AdmZip();
+	linuxZip.addLocalFile("tmp/index.theme", ".");
+	linuxZip.addLocalFolder("tmp/cursors", "cursors");
+	linuxZip.writeZip("splatoon3-cursors-linux.zip");
+
+	// Check if wincur exists
+	if (fs.existsSync("tmp/wincur")) {
+		log.debug("Zipping for Windows cursors");
+		const winZip = new AdmZip();
+		for (const file of fs.readdirSync("tmp/wincur")) {
+			winZip.addLocalFile(path.join("tmp/wincur", file), ".");
+			log.debug("Added", file, "to Windows ZIP");
+		}
+		winZip.writeZip("splatoon3-cursors-windows.zip");
+	}
+
+	next();
+}
+
+function clean() {
+	if (fs.existsSync("tmp")) fs.rmSync("tmp", { recursive: true });
 }

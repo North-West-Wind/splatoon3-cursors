@@ -8,7 +8,7 @@ function decode(path: string) {
 
 (async () => {
 	const content = fs.readFileSync("tmp/cursor_files/alias.cursor", { encoding: "utf8" });
-	const images = [];
+	const images: any[] = [];
 	for (const line of content.split("\n")) {
 		const [type, xhot, yhot, file, delay] = line.split(" ");
 		const pixels = await decode(`tmp/images/${file}`);

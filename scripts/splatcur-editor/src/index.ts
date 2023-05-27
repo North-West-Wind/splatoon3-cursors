@@ -4,7 +4,6 @@ import * as fs from "fs";
 import * as path from "path";
 import { Resvg } from "@resvg/resvg-js";
 import { decode, execute, twoDigits } from './helper';
-import { simpleGit } from 'simple-git';
 import tinycolor, { Instance } from 'tinycolor2';
 import { Canvas, Image } from 'canvas';
 import sizeOf from "image-size";
@@ -13,6 +12,7 @@ import log from "loglevel";
 import { Option, program } from 'commander';
 import AdmZip from "adm-zip";
 import { Presets, SingleBar } from "cli-progress";
+import gitly from "gitly";
 const { Encoder } = require("xcursor");
 
 // Config
@@ -96,29 +96,27 @@ function next() {
 	func();
 }
 
-function clone() {
+async function clone() {
 	log.info("Cloning repository...");
 	// git clone the repo
-	const git = simpleGit("tmp").outputHandler((_command, stdout) => stdout.pipe(process.stdout));
-	git.clone("https://github.com/North-West-Wind/splatoon3-cursors", undefined, () => {
-		// Move cursor files and images to tmp
-		fs.renameSync("tmp/splatoon3-cursors/index.theme", "tmp/index.theme");
-		fs.renameSync("tmp/splatoon3-cursors/cursor_files", "tmp/cursor_files");
-		fs.renameSync("tmp/splatoon3-cursors/images", "tmp/images");
-		fs.renameSync("tmp/splatoon3-cursors/html/BlitzBold.otf", "tmp/BlitzBold.otf");
-		fs.renameSync("tmp/splatoon3-cursors/scripts/loading_animator/loading.png", "tmp/loading.png");
-		// If there's no config, also take it from repo
-		if (copyConfig) {
-			fs.renameSync("tmp/splatoon3-cursors/scripts/splatcur-editor/s3cconfig.json", "s3cconfig.json");
-			config = JSON.parse(fs.readFileSync("s3cconfig.json", { encoding: "utf8" }));
-			log.info("Only git clone is run this time in order to pull in s3cconfig.json. Next run will generate everything.");
-		}
-		// Removed the clone
-		fs.rmSync("tmp/splatoon3-cursors", { recursive: true });
-		if (copyConfig) process.exit(0);
+	await gitly("North-West-Wind/splatoon3-cursors", "tmp/splatoon3-cursors", {});
+	// Move cursor files and images to tmp
+	fs.renameSync("tmp/splatoon3-cursors/index.theme", "tmp/index.theme");
+	fs.renameSync("tmp/splatoon3-cursors/cursor_files", "tmp/cursor_files");
+	fs.renameSync("tmp/splatoon3-cursors/images", "tmp/images");
+	fs.renameSync("tmp/splatoon3-cursors/html/BlitzBold.otf", "tmp/BlitzBold.otf");
+	fs.renameSync("tmp/splatoon3-cursors/scripts/loading_animator/loading.png", "tmp/loading.png");
+	// If there's no config, also take it from repo
+	if (copyConfig) {
+		fs.renameSync("tmp/splatoon3-cursors/scripts/splatcur-editor/s3cconfig.json", "s3cconfig.json");
+		config = JSON.parse(fs.readFileSync("s3cconfig.json", { encoding: "utf8" }));
+		log.info("Only git clone is run this time in order to pull in s3cconfig.json. Next run will generate everything.");
+	}
+	// Removed the clone
+	fs.rmSync("tmp/splatoon3-cursors", { recursive: true });
+	if (copyConfig) process.exit(0);
 
-		next();
-	});
+	next();
 }
 
 function exportFiles() {

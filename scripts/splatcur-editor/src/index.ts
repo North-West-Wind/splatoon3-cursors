@@ -368,8 +368,8 @@ async function x2win() {
 function pack() {
 	log.info("Putting everything into ZIP files...");
 	const linuxZip = new AdmZip();
-	linuxZip.addLocalFile("tmp/index.theme", ".");
-	linuxZip.addLocalFolder("tmp/cursors", "cursors");
+	linuxZip.addLocalFile("tmp/index.theme", "splatoon3-cursors");
+	linuxZip.addLocalFolder("tmp/cursors", "splatoon3-cursors/cursors");
 	linuxZip.writeZip("splatoon3-cursors-linux.zip");
 
 	// Check if wincur exists

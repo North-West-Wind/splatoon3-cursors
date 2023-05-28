@@ -4,8 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 import sharp from 'sharp';
 import { decode, execute, twoDigits } from './helper';
-import tinycolor, { Instance } from 'tinycolor2';
-import { Canvas, Image } from 'canvas';
+import Color from "color";
 import sizeOf from "image-size";
 import commandExists from "command-exists";
 import log from "loglevel";
@@ -126,17 +125,17 @@ async function exportFiles() {
 		if (!file.endsWith(".svg")) fs.rmSync(path.join("tmp/images", file), { recursive: true });
 	for (const size of SIZES) fs.mkdirSync(path.join("tmp/images", `${size}x${size}`));
 	// Start processing
-	var color: Instance;
+	var color: Color;
 	// Ask for all colors
-	if (mode == "all") color = tinycolor(config.all);
+	if (mode == "all") color = new Color("#" + config.all);
 	// Ask for group colors
-	var groupColors: { [key: string]: Instance } = {};
-	var subgroupColors: { [key: string]: Instance } = {};
+	var groupColors: { [key: string]: Color } = {};
+	var subgroupColors: { [key: string]: Color } = {};
 	if (mode == "group") {
 		for (const group in config.groups)
-			groupColors[group] = tinycolor(config.group[group]);
+			groupColors[group] = Color("#" + config.group[group]);
 		for (const group in config.subgroups)
-			subgroupColors[group] = tinycolor(config.subgroup[group]);
+			subgroupColors[group] = Color("#" + config.subgroup[group]);
 	}
 
 	var draw: SVGTypeMapping<any>;
@@ -173,32 +172,32 @@ async function exportFiles() {
 					// If no groups found, skip recoloring
 					if (!group) {
 						if (!options.individualFallback || !config.individual[name]) skip = true;
-						else color = tinycolor(config.individual[name]);
+						else color = Color("#" + config.individual[name]);
 					} else color = groupColors[group];
 					break;
 				}
 				case "individual": {
 					// Ask for color individually
 					if (!config.individual[name]) skip = true;
-					else color = tinycolor(config.individual[name]);
+					else color = Color("#" + config.individual[name]);
 					break;
 				}
 			}
-	
+
 			if (!skip) {
 				// Change the fill style
-				log.debug("Filling main with color", color!.toHexString());
-				main?.css("fill", color!.toHexString());
+				log.debug("Filling main with color", color!.hex());
+				main?.css("fill", color!.hex());
 				// Copy the color to stroke and change the stroke style
-				var strokeColor = color!.clone();
-				if (options.lightStroke) strokeColor.lighten(25);
-				else strokeColor.darken(25);
-				log.debug("Stroking main with color", strokeColor!.toHexString());
-				main?.css("stroke", strokeColor.toHexString());
-			
+				var strokeColor = color!;
+				if (options.lightStroke) strokeColor = strokeColor.lighten(25);
+				else strokeColor = strokeColor.darken(25);
+				log.debug("Stroking main with color", strokeColor!.hex());
+				main?.css("stroke", strokeColor.hex());
+
 				// Check if the images uses secondary color
 				if (config.sub[name]) {
-					var subcolor: Instance;
+					var subcolor: Color;
 					if (mode == "group") {
 						// Look for subgroup color
 						group = undefined;
@@ -210,31 +209,31 @@ async function exportFiles() {
 						log.debug(name, "is in subgroup", group);
 						if (!group) {
 							if (!options.individualFallback || !config.sub[name]) skip = true;
-							else subcolor = tinycolor(config.sub[name]);
+							else subcolor = Color("#" + config.sub[name]);
 						} else subcolor = subgroupColors[group];
 					} else if (!config.sub[name]) skip = true;
-					else subcolor = tinycolor(config.sub[name]);
+					else subcolor = Color("#" + config.sub[name]);
 					if (!skip) {
 						// Find sub object
 						const sub = draw.findOne("#sub");
 						// Change fill and stroke style of sub object
-						log.debug("Filling sub with color", subcolor!.toHexString());
-						sub?.css("fill", subcolor!.toHexString());
-						strokeColor = subcolor!.clone();
-						if (options.b) strokeColor.brighten(25);
-						else strokeColor.darken(25);
-						log.debug("Stroking sub with color", strokeColor!.toHexString());
-						sub?.css("stroke", strokeColor.toHexString());
+						log.debug("Filling sub with color", subcolor!.hex());
+						sub?.css("fill", subcolor!.hex());
+						strokeColor = subcolor!;
+						if (options.b) strokeColor = strokeColor.lighten(25);
+						else strokeColor = strokeColor.darken(25);
+						log.debug("Stroking sub with color", strokeColor!.hex());
+						sub?.css("stroke", strokeColor.hex());
 					}
 				}
 			}
 		}
-	
+
 		// Export SVG
 		for (const size of SIZES) {
 			// Render to PNG
 			log.debug("Exporting to", `${size}x${size}/${name}.png`);
-			fs.writeFileSync(path.join("tmp/images", `${size}x${size}`, name + ".png"), await sharp(Buffer.from(draw.svg())).resize(size, size).png().toBuffer());
+			await sharp(Buffer.from(draw.svg())).resize(size, size).toFile(path.join("tmp/images", `${size}x${size}`, name + ".png"));
 		}
 		bar.increment();
 	}
@@ -249,35 +248,39 @@ async function exportFiles() {
 
 	var colors: string[] = Array(3).fill(config.loading[0]).concat(Array(15).fill(config.loading[1]), Array(16).fill(config.loading[0]), Array(16).fill(config.loading[1]), Array(14).fill(config.loading[0]));
 	var count = 0;
-	const img = new Image();
-	img.onload = () => {
-		bar.start(64, 0);
-		for (let ii = 0; ii < 8; ii++) {
-			for (let jj = 0; jj < 8; jj++) {
-				const canvas = new Canvas(128, 128, "image");
-				const ctx = canvas.getContext("2d");
-				ctx.drawImage(img, -jj*130 - 1, -ii*130 - 1);
-				ctx.globalCompositeOperation = "source-in";
-				ctx.fillStyle = tinycolor(colors[count]).toHexString();
-				ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-				for (const res of SIZES) {
-					const smallCanvas = new Canvas(res * 2, res * 2, "image");
-					const smallCtx = smallCanvas.getContext("2d");
-					smallCtx.drawImage(canvas, 0, 0, smallCanvas.width, smallCanvas.height);
-					fs.writeFileSync(`tmp/frames/${res}x${res}/${twoDigits(count)}.png`, smallCanvas.toBuffer());
+	const loading = fs.readFileSync("tmp/loading.png");
+	const loaded = sharp(loading);
+	bar.start(64, 0);
+	for (let ii = 0; ii < 8; ii++) {
+		for (let jj = 0; jj < 8; jj++) {
+			const cropped = loaded
+				.clone()
+				.extract({ width: 128, height: 128, left: jj * 130 + 1, top: ii * 130 + 1 });
+			const img = sharp(await cropped.png().toBuffer()).composite([
+				{
+					input: {
+						create: {
+							width: 128,
+							height: 128,
+							channels: 4,
+							background: Color("#" + colors[count]).hex()
+						}
+					},
+					blend: "in"
 				}
-				count++;
-				bar.increment();
-			}
-		}
-		bar.stop();
+			]);
 
-		for (const size of SIZES)
-			fs.renameSync(`tmp/frames/${size}x${size}`, `tmp/images/${size}x${size}/wait`);
-		next();
+			for (const res of SIZES)
+				await sharp(await img.png().toBuffer()).resize(res * 2).toFile(`tmp/frames/${res}x${res}/${twoDigits(count)}.png`);
+			count++;
+			bar.increment();
+		}
 	}
-	img.src = "tmp/loading.png";
+	bar.stop();
+
+	for (const size of SIZES)
+		fs.renameSync(`tmp/frames/${size}x${size}`, `tmp/images/${size}x${size}/wait`);
+	next();
 }
 
 async function convert() {
@@ -300,8 +303,8 @@ async function convert() {
 			const dimension = sizeOf(`tmp/images/${file}`);
 			const pixels = await decode(`tmp/images/${file}`);
 			for (let ii = 0, n = pixels.length; ii < n; ii += 4) {
-				const tmp = pixels[ii+2];
-				pixels[ii+2] = pixels[ii];
+				const tmp = pixels[ii + 2];
+				pixels[ii + 2] = pixels[ii];
 				pixels[ii] = tmp;
 			}
 			const obj: any = {
@@ -315,7 +318,7 @@ async function convert() {
 			if (delay) obj.delay = parseInt(delay);
 			images.push(obj);
 		}
-		
+
 		const buf = Buffer.from(new Encoder(images).pack());
 		// Pretend to be a version x2wincur supports
 		buf[8] = 0;

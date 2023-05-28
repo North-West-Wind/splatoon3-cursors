@@ -2,7 +2,7 @@
 import { SVG, SVGTypeMapping, registerWindow } from '@svgdotjs/svg.js'
 import * as fs from "fs";
 import * as path from "path";
-import { Resvg } from "@resvg/resvg-js";
+import sharp from 'sharp';
 import { decode, execute, twoDigits } from './helper';
 import tinycolor, { Instance } from 'tinycolor2';
 import { Canvas, Image } from 'canvas';
@@ -119,7 +119,7 @@ async function clone() {
 	next();
 }
 
-function exportFiles() {
+async function exportFiles() {
 	log.info("Exporting image files to various sizes...");
 	// Prepping directories
 	for (const file of fs.readdirSync("tmp/images"))
@@ -232,14 +232,9 @@ function exportFiles() {
 	
 		// Export SVG
 		for (const size of SIZES) {
-			// Load in SVG string
-			const resvg = new Resvg(draw.svg(), {
-				fitTo: { mode: "width", value: size },
-				font: { fontFiles: ["tmp/BlitzBold.otf"], defaultFontFamily: "Splatoon1" }
-			});
 			// Render to PNG
 			log.debug("Exporting to", `${size}x${size}/${name}.png`);
-			fs.writeFileSync(path.join("tmp/images", `${size}x${size}`, name + ".png"), resvg.render().asPng());
+			fs.writeFileSync(path.join("tmp/images", `${size}x${size}`, name + ".png"), await sharp(Buffer.from(draw.svg())).resize(size, size).png().toBuffer());
 		}
 		bar.increment();
 	}

@@ -1,6 +1,6 @@
 {
   "name": "splatcur-editor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A script to generate NorthWestWind's Splatoon cursor pack with different colors.",
   "main": "lib/index.js",
   "bin": "lib/index.js",
@@ -25,7 +25,6 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@resvg/resvg-js": "^2.4.1",
     "@svgdotjs/svg.js": "^3.1.2",
     "adm-zip": "^0.5.10",
     "canvas": "^2.11.2",
@@ -36,6 +35,7 @@
     "image-size": "^1.0.2",
     "loglevel": "^1.8.1",
     "png-js": "^1.0.0",
+    "sharp": "^0.32.1",
     "svgdom": "^0.1.14",
     "tinycolor2": "^1.6.0",
     "xcursor": "^1.1.7"

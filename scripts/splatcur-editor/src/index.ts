@@ -352,13 +352,17 @@ async function x2win() {
 			process.exit(3);
 		}
 	}
-	log.debug("Ensuring pip can be used");
-	await execute(command, ["-m", "ensurepip"], options.verbose);
-	log.debug("Ensuring win2xcur is installed");
-	await execute("pip", ["install", "win2xcur"], options.verbose);
-	if (!fs.existsSync("tmp/wincur")) fs.mkdirSync("tmp/wincur");
-	log.debug("Converting Xcursors to Windows cursors");
-	await execute("x2wincur", fs.readdirSync("tmp/cursors_nosym").map(f => `tmp/cursors_nosym/${f}`).concat(["-o", "tmp/wincur"]), options.verbose);
+	try {
+		log.debug("Ensuring pip can be used");
+		await execute(command, ["-m", "ensurepip"], options.verbose);
+		log.debug("Ensuring win2xcur is installed");
+		await execute("pip", ["install", "win2xcur"], options.verbose);
+		if (!fs.existsSync("tmp/wincur")) fs.mkdirSync("tmp/wincur");
+		log.debug("Converting Xcursors to Windows cursors");
+		await execute("x2wincur", fs.readdirSync("tmp/cursors_nosym").map(f => `tmp/cursors_nosym/${f}`).concat(["-o", "tmp/wincur"]), options.verbose);
+	} catch (err) {
+		log.warn("One of the Python commands cannot be run. Skipped Windows cursors generation.");
+	}
 
 	next();
 }

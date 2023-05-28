@@ -30,8 +30,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="4.2784722"
-     inkscape:cx="-50.251583"
-     inkscape:cy="35.176108"
+     inkscape:cx="49.667262"
+     inkscape:cy="35.292972"
      inkscape:window-width="1920"
      inkscape:window-height="1002"
      inkscape:window-x="0"
@@ -95,18 +95,11 @@
          cy="5.953125"
          r="0.92604166" />
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;fill:#435ece;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
-       x="11.185405"
-       y="16.7894"
+    <path
+       d="m 15.613473,16.933333 c 0.0254,-0.5842 0.0254,-0.982133 0.0085,-1.151467 -0.795867,-0.01693 -1.651001,-0.01693 -1.930401,-0.01693 0.0085,0.5842 0.0254,0.9906 0.03387,1.159934 0.694267,0.0085 1.6002,0.0085 1.888067,0.0085 z m 0.635,-2.878667 c 0.575734,-0.745067 0.965201,-1.439334 0.431801,-2.556935 -0.516467,-1.075267 -2.252135,-1.4224 -3.742269,-1.058333 -1.456267,0.364066 -1.557867,1.761067 -1.430867,2.768601 0.660401,0.0085 1.566334,-0.01693 1.862668,-0.0254 0.0254,-0.922867 0.728133,-0.846667 0.728133,-0.846667 0.609601,0.06773 0.745067,0.7874 0.262467,1.3208 -0.01693,0.0085 -0.719667,0.795867 -0.635,1.422401 0.745067,0.01693 1.642534,-0.0085 1.921934,-0.0085 0.0762,-0.347133 0.601133,-1.016 0.601133,-1.016 z"
+       style="font-size:8.46667px;line-height:1.25;font-family:Splatoon1;-inkscape-font-specification:Splatoon1;fill:#435ece;stroke-width:0.264583"
        id="sub"
-       inkscape:label="sub"><tspan
-         sodipodi:role="line"
-         id="tspan1933"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Splatoon1;-inkscape-font-specification:Splatoon1;fill:#435ece;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
-         x="11.185405"
-         y="16.7894">?</tspan></text>
+       inkscape:label="sub" />
   </g>
   <metadata
      id="metadata12333">
